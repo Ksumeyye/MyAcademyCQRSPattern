@@ -1,9 +1,16 @@
+using MyAcademyCQRSPattern.CQRSPattern.Handlers;
 using MyAcademyCQRSPattern.DataAccess.Context;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<CreateCustomerCommandHandler>();
+builder.Services.AddScoped<UpdateCustomerCommandHandler>();
+builder.Services.AddScoped<RemoveCustomerCommandHandler>();
+builder.Services.AddScoped<GetCustomerQueryHandler>();
+builder.Services.AddScoped<GetCustomerByIdQueryHandler>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddDbContext<Context>();
 builder.Services.AddControllersWithViews();

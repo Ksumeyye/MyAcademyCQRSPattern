@@ -1,0 +1,31 @@
+﻿@using MyAcademyCQRSPattern.CQRSPattern.Results
+@model List<GetCustomerQueryResult>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Müşteriler</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Şehir</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.CustomerId</th>
+            <th>@item.Name</th>
+            <th>@item.Surname</th>
+            <th>@item.City</th>
+            <td>
+                <a href="/Customer/DeleteCustomer/@item.CustomerId" class="btn btn-danger">Sil</a>
+                <a href="/Customer/UpdateCustomer/@item.CustomerId" class="btn btn-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="/Customer/CreateCustomer/" class="btn btn-info">Yeni Müşteri Ekle</a>
+
